@@ -5,7 +5,6 @@ import numpy as np
 import ros_numpy
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Image
-
 # from sensor_msgs.msg import PointCloud2
 # from mpl_toolkits import mplot3d
 # import matplotlib.pyplot as plt

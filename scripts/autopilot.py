@@ -30,8 +30,8 @@ class Move:
 
     def __init__(self):
         self.vel = [0.4, 0, -0.4]
+        self.pub = rospy.Publisher('/cmd_vel', Twist, queue_size=3)
         self.rate = rospy.Rate(10)  # 10Hz
-        self.pub = rospy.Publisher('/cmd_vel', Twist, queue_size=25)
 
     def travel(self):
         # global depth_image
