@@ -41,6 +41,7 @@ def main():
     x = layers.MaxPooling2D(pool_size=(2, 2), strides=2)(x)  # 2x2 pooling
     x = layers.Conv2D(filters=64, padding='same', kernel_size=(5, 5))(x)  # third convolutional layer 64 nodes
     x = layers.Activation('relu')(x)  # relu activation
+    x = layers.MaxPooling2D(pool_size=(2, 2), strides=2)(x)  # 2x2 pooling
     x = layers.Flatten()(x)  # flatten to connect with dense layer
     outp = layers.Dense(units=num_classes, activation='softmax')(x)  # fully connected with 3 outputs
     model = tf.keras.Model(inputs=inp, outputs=outp)
@@ -51,15 +52,6 @@ def main():
     score = model.evaluate(test_data, verbose=2)
     results = model.predict(test_data)
     print(score)
-    # make the model to extract the feature maps
-    # control_model = models.Sequential()
-    # inp = layers.Input(shape=(15, 20, 64))
-    # x = layers.Flatten()(inp)
-    # x = layers.Dense(units=7)(x)
-    # x = layers.Dense(units=5)(x)
-    # outp = layers.Dense(units=3)(x)
-    # control_model = tf.keras.Model(inputs=inp, outputs=outp)
-    # control_model.summary()
     feature_maps_model = keras.Model(inputs=model.input,
                                      outputs=model.get_layer('max_pooling2d_2').output)
     model.save('perception_cnn')  # save model

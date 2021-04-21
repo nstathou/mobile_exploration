@@ -10,7 +10,7 @@ from sensor_msgs.msg import Image
 # import matplotlib.pyplot as plt
 
 depth_data = []  # to hold the depth images
-commands = []  # to hold the command vector00
+commands = []  # to hold the command vector
 vel = [0, 0, 0, 0, 0, 0]  # to hold the velocity of our robot
 height = 120  # height to resize image (quarter of original)
 width = 160  # width to resize image (quarter of original)
